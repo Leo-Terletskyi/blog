@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.urls import reverse
 
 user = get_user_model()
 
@@ -32,6 +33,9 @@ class Article(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     author = models.ForeignKey(user, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('article_detail', kwargs={'slug': self.slug})
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         if not self.slug:
