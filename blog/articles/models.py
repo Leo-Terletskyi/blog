@@ -10,6 +10,9 @@ class Category(models.Model):
     name = models.CharField(max_length=32, unique=True)
     slug = models.SlugField(null=True, blank=True)
 
+    def get_absolute_url(self):
+        return reverse('category_list', kwargs={'slug': self.slug})
+
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         if not self.slug:
             self.slug = slugify(self.name)

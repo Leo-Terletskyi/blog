@@ -43,3 +43,7 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+.fw-bold {
+	font-family: Conv_P22PopArt-ThreeD;
+}
