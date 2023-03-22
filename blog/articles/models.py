@@ -14,6 +14,9 @@ class Category(models.Model):
             self.slug = slugify(self.name)
         return super().save(force_insert=False, force_update=False, using=None, update_fields=None)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
@@ -21,7 +24,7 @@ class Category(models.Model):
 
 
 class Article(models.Model):
-    title = models.CharField(max_length=32, unique=True)
+    title = models.CharField(max_length=64, unique=True)
     slug = models.SlugField(null=True, blank=True)
     content = models.TextField()
     image = models.ImageField(null=True, blank=True, upload_to='static/article_images')
@@ -34,6 +37,9 @@ class Article(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         return super().save(force_insert=False, force_update=False, using=None, update_fields=None)
+
+    def __str__(self):
+        return self.title
 
     class Meta:
         verbose_name = 'Article'
