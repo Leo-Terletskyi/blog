@@ -1,5 +1,5 @@
 from django.contrib.auth import login, logout, authenticate
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 
@@ -87,3 +87,22 @@ class ArticleCreateView(generic.CreateView):
         article.author = self.request.user
         article.save()
         return redirect('home_page')
+
+
+class SearchListView(generic.ListView):
+    model = Article
+    template_name = 'articles/search.html'
+    context_object_name = 'articles'
+
+    def get_queryset(self):
+        q = self.request.GET.get('q')
+        qs = Article.objects.filter(Q(title__icontains=q) | Q(content__icontains=q)).select_related('category', 'author')
+        return qs
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=None, **kwargs)
+        context['categories'] = Category.objects.all().annotate(count_articles=Count('article'))
+        return context
+
+
+

@@ -2,38 +2,12 @@
 {% load static %}
 {% block title %} Home Page | Django Blog {% endblock %}
 {% block cats %}
-    <h3 class="main-title">Categories:</h3>
-    <ol class="list-group list-group-numbered mb-3 mt-3">
-        {% for cat in categories %}
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold"><a href="{{ cat.get_absolute_url }}">{{ cat }}</a></div>
-                </div>
-                <span class="badge bg-primary rounded-pill">{{ cat.count_articles }}</span>
-            </li>
-        {% endfor %}
-    </ol>
+    {% include 'components/cats.html' %}
 {% endblock %}
 
 {% block content %}
     <h3 class="main-title">Home Page</h3>
     {% for article in articles %}
-        <div class="card mb-3 mt-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="{{ article.image.url }}" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ article.title }}</h5>
-                        <p class="card-text">{{ article.content | truncatewords:25 }}</p>
-                        <div class="card-body__footer">
-                            <p class="card-text"><small class="text-muted">Last updated {{ article.updated_at }}</small></p>
-                            <a href="{{ article.get_absolute_url }}" class="btn btn-outline-dark">Read</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% include 'components/card_mini.html' %}
     {% endfor %}
 {% endblock %}

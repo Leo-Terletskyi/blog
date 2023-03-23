@@ -49,7 +49,7 @@
                     {% if user.is_authenticated %}
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a href="#" class="nav-link fw-bold">{{ user.username }}</a>
+                                <a href="#" class="nav-link fw-bold" style="color: aqua; text-decoration: overline">{{ user.username }}</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{% url 'add_new_article' %}" class="nav-link">add article</a>
@@ -68,8 +68,8 @@
                             </li>
                         </ul>
                     {% endif %} 
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex" role="search" method="get" action="{% url 'search' %}">
+                        <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-info" type="submit">Search</button>
                     </form>
                 </div>
