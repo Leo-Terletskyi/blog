@@ -49,10 +49,10 @@
                     {% if user.is_authenticated %}
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">{{ user.username }}</a>
+                                <a href="#" class="nav-link fw-bold">{{ user.username }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">add post</a>
+                                <a href="{% url 'add_new_article' %}" class="nav-link">add article</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{% url 'logout' %}" class="nav-link">logout</a>

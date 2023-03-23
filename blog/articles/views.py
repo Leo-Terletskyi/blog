@@ -3,7 +3,7 @@ from django.db.models import Count
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 
-from .forms import UserRegister, UserLogin
+from .forms import UserRegister, UserLogin, AddArticleForm
 from .models import Category, Article
 
 
@@ -76,3 +76,14 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+
+class ArticleCreateView(generic.CreateView):
+    form_class = AddArticleForm
+    template_name = 'articles/add_article.html'
+
+    def form_valid(self, form):
+        article = form.save(commit=False)
+        article.author = self.request.user
+        article.save()
+        return redirect('home_page')

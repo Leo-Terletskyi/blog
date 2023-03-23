@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
+from articles.models import Article
+
 user_model = get_user_model()
 
 
@@ -50,3 +52,13 @@ class UserLogin(AuthenticationForm):
                                                                  "placeholder": "Enter your password"}))
 
 
+class AddArticleForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = ("title", "content", "image", "category")
+        widgets = {
+            "title": forms.TextInput(attrs={"class": "form-control"}),
+            "content": forms.Textarea(attrs={"class": "form-control", "rows": 10}),
+            "image": forms.FileInput(attrs={"class": "form-control"}),
+            "category": forms.Select(attrs={"class": "form-control"}),
+        }

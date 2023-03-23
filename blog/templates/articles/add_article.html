@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}
+    new article
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <h3 class="main-title text-center mt-3">New article</h3>
+        <form action="{% url 'add_new_article' %}" method="post" enctype="multipart/form-data" autocomplete="off">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.as_p }}
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-info" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
