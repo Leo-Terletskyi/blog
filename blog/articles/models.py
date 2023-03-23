@@ -3,6 +3,8 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
+from ckeditor.fields import RichTextField
+
 user = get_user_model()
 
 
@@ -30,8 +32,8 @@ class Category(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length=64, unique=True)
     slug = models.SlugField(null=True, blank=True)
-    content = models.TextField()
-    image = models.ImageField(null=True, blank=True, upload_to='static/article_images')
+    content = RichTextField()
+    image = models.ImageField(upload_to='static/article_images')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)

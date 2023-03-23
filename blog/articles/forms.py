@@ -2,7 +2,9 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
-from articles.models import Article
+from ckeditor.widgets import CKEditorWidget
+
+from .models import Article
 
 user_model = get_user_model()
 
@@ -58,7 +60,7 @@ class AddArticleForm(forms.ModelForm):
         fields = ("title", "content", "image", "category")
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
-            "content": forms.Textarea(attrs={"class": "form-control", "rows": 10}),
+            "content": CKEditorWidget(),
             "image": forms.FileInput(attrs={"class": "form-control"}),
             "category": forms.Select(attrs={"class": "form-control"}),
         }
