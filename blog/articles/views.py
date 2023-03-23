@@ -12,6 +12,7 @@ class HomePage(generic.ListView):
     context_object_name = 'articles'
     template_name = 'articles/home_page.html'
     queryset = Article.objects.all().select_related('category', 'author')
+    paginate_by = 5
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=None, **kwargs)
@@ -38,6 +39,7 @@ class CategoryList(generic.ListView):
     model = Article
     context_object_name = 'articles'
     template_name = 'articles/category.html'
+    paginate_by = 5
 
     def get_queryset(self):
         return Article.objects.filter(category__slug=self.kwargs.get('slug')).select_related('category', 'author')
@@ -102,6 +104,7 @@ class SearchListView(generic.ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=None, **kwargs)
         context['categories'] = Category.objects.all().annotate(count_articles=Count('article'))
+        context['search_string'] = self.request.GET.get('q') or 'Empty string return the same as home page'
         return context
 
 

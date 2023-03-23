@@ -1,56 +1,83 @@
 @font-face {
-	font-family: 'Conv_P22PopArt-ThreeD';
-	src: url('../fonts/fonts/P22PopArt-ThreeD.eot');
-	src: local('☺'), url('../fonts/fonts/P22PopArt-ThreeD.woff') format('woff'), url('../fonts/fonts/P22PopArt-ThreeD.ttf') format('truetype'), url('../fonts/fonts/P22PopArt-ThreeD.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'Conv_P22PopArt-ThreeD';
+    src: url('../fonts/fonts/P22PopArt-ThreeD.eot');
+    src: local('☺'), url('../fonts/fonts/P22PopArt-ThreeD.woff') format('woff'), url('../fonts/fonts/P22PopArt-ThreeD.ttf') format('truetype'), url('../fonts/fonts/P22PopArt-ThreeD.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 .wrapper {
-	display: flex;
-	flex-direction: column;
-	background-image: linear-gradient(-225deg, #7085B6 0%, #87A7D9 50%, #DEF3F8 100%);
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(-225deg, #7085B6 0%, #87A7D9 50%, #DEF3F8 100%);
 }
+
 .header {
 
 }
+
 .content {
-	min-height: 100vh;
+    min-height: 100vh;
 }
+
 .footer {
-	min-height: 80px;
-	background: darkgrey;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    min-height: 40px;
+    background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .navbar, .navbar-expand-lg {
-	background-image: linear-gradient(to top, #f43b47 0%, #453a94 100%);
-	color: white;
+    background-image: linear-gradient(to top, #f43b47 0%, #453a94 100%);
+    color: white;
 }
+
 .navbar-nav .nav-link {
-  color: gold;
+    color: gold;
 }
+
 .btn-info {
-	background: darkorange;
+    background: darkorange;
 }
+
 .row {
-	min-height: 100%;
+    min-height: 100%;
 }
 
 .main-title {
-	font-family: Conv_P22PopArt-ThreeD;
-	font-weight: 700;
-	background-image: linear-gradient( 109.6deg,  rgba(0,0,0,1) 11.2%, rgba(247,30,30,1) 100.3% );
-	color: white;
-	text-shadow: 0 0 2px deepskyblue;
-	margin-top: 4px;
+    font-family: Conv_P22PopArt-ThreeD;
+    font-weight: 700;
+    background-image: linear-gradient(109.6deg, rgba(0, 0, 0, 1) 11.2%, rgba(247, 30, 30, 1) 100.3%);
+    color: white;
+    text-shadow: 0 0 2px deepskyblue;
+    margin-top: 4px;
 }
+
 .card-body__footer {
-	display: flex;
-	justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .fw-bold {
-	font-family: Conv_P22PopArt-ThreeD;
+    font-family: Conv_P22PopArt-ThreeD;
 }
+
+.list-group-item {
+    background: black;
+}
+
+li:before {
+    color: white;
+}
+
+.rounded-pill {
+    font-size: 14px;
+    background: darkorange;
+}
+
+.cat-link, .cat-link:active, .cat-link:hover {
+    color: darkorange;
+    font-size: 18px;
+}
+

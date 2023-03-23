@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Home Page | Django Blog {% endblock %}
+{% block title %} {{ article.title | truncatewords:3}} | Django Blog {% endblock %}
 {% block cats %}
     <h3 class="main-title">Categories:</h3>
     <ol class="list-group list-group-numbered mb-3 mt-3">

@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <h3 class="main-title">Search</h3>
+    <h3 class="main-title">Search result by: <span style="color: aqua">{{ search_string }}</span></h3>
     {% for article in articles %}
         {% include 'components/card_mini.html' %}
     {% endfor %}
