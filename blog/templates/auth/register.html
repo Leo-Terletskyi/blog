@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}
+    register new user
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <h3 class="main-title text-center mt-3">Register new user</h3>
+        <form action="{% url 'register' %}" method="post" autocomplete="off">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.as_p }}
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-info" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

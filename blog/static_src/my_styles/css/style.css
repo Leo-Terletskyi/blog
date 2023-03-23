@@ -9,7 +9,7 @@
 .wrapper {
 	display: flex;
 	flex-direction: column;
-	background-image: linear-gradient( 89.9deg,  rgba(208,246,255,1) 0.1%, rgba(255,237,237,1) 47.9%, rgba(255,255,231,1) 100.2% );
+	background-image: linear-gradient(-225deg, #7085B6 0%, #87A7D9 50%, #DEF3F8 100%);
 }
 .header {
 
@@ -25,7 +25,14 @@
 	align-items: center;
 }
 .navbar, .navbar-expand-lg {
-	background-image: radial-gradient( circle farthest-corner at 7.1% 15.6%,  rgba(22,160,133,1) 0%, rgba(64,240,206,1) 100.3% );
+	background-image: linear-gradient(to top, #f43b47 0%, #453a94 100%);
+	color: white;
+}
+.navbar-nav .nav-link {
+  color: gold;
+}
+.btn-info {
+	background: darkorange;
 }
 .row {
 	min-height: 100%;

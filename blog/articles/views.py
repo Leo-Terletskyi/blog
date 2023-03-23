@@ -1,7 +1,9 @@
+from django.contrib.auth import login, logout, authenticate
 from django.db.models import Count
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 
+from .forms import UserRegister, UserLogin
 from .models import Category, Article
 
 
@@ -47,3 +49,30 @@ class CategoryList(generic.ListView):
         return context
 
 
+def register_user(request):
+    if request.method == 'POST':
+        form = UserRegister(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home_page')
+        return render(request, template_name='auth/register.html', context={'form': form})
+    form = UserRegister()
+    return render(request, template_name='auth/register.html', context={'form': form})
+
+
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            form = login(request, user)
+            return redirect('home_page')
+    form = UserLogin()
+    return render(request, 'auth/login.html', {'form': form})
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')
